@@ -1,0 +1,57 @@
+﻿@model List<LandsDepartment.Models.aspnet_Membership>
+<section id="content" style="margin-bottom: 0px;">
+            <div class="content-wrap">
+                <div class="container clearfix">
+                    <div class="fancy-title title-double-border">
+                        <h1>Manage Users</h1> 
+                        <span style="float:right"><input type="button" id="CreateNewUser" value="Add New User" class="btn btn-success btn-xs"  /></span>
+                    </div>
+                            
+                    <div class="table-responsive">
+                        <table class="table" id="userslist">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Joined</th>
+                                    <th>Email</th>
+                                    <th>Last Active</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model)
+                            {
+                                  <tr>
+                                    <td>1</td>
+                                    <td>@item.aspnet_Users.UserName</td>
+                                    <td>@(item.CreateDate != null ? item.CreateDate.ToShortDateString() : "")</td>
+                                    <td>@item.Email</td>
+                                    <td>@(item.LastLoginDate != null ? item.LastLoginDate.ToShortDateString() : "")</td>
+                                    <td>
+                                    @if (item.IsLockedOut)
+                                    {
+                                        @Html.ActionLink("Un block", "UnblockUser", new { id = item.UserId }, new { @class = "btn  btn-xs btn-danger" }) 
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Block", "BlockUser", new { id = item.UserId }, new { @class = "btn  btn-success btn-xs" }) 
+                                    }
+                            <input type="button" id="changeUserPassword" value="Change Password" class="btn btn-success btn-xs" title="@item.aspnet_Users.UserName"  />
+                                       
+                                      @* @Html.ActionLink("Change Password", "ChangeUserPassword", new { userid = item.aspnet_Users.UserName }, new { @class = "btn btn-success btn-xs" }) *@
+                                        @*<button type="button" class="btn btn-success btn-xs">Change Password</button>*@
+                                        
+                                    </td>
+                                </tr>
+                            }
+                              
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+            </div>
+            <!-- #wrapper end -->
+        </section>

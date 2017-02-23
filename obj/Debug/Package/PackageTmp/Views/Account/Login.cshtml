@@ -1,0 +1,46 @@
+﻿@model LandsDepartment.Models.RegistrationViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>My Account</h1>
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Pages</a></li>
+					<li class="active">Login</li>
+				</ol>
+			</div>
+
+</section><!-- #page-title end -->
+
+		<!-- Content
+		============================================= -->
+<section id="content">
+
+			<div class="content-wrap">
+
+				<div class="container clearfix">
+
+					<div class="col_one_third nobottommargin">
+
+						<div class="well well-lg nobottommargin">
+							@Html.Partial("_Login", Model)
+						</div>
+
+					</div>
+
+					<div class="col_two_third col_last nobottommargin">
+						<h3>Don't have an Account? Register Now.</h3>
+
+						@Html.Partial("_Register", Model)
+
+					</div>
+
+				</div>
+
+			</div>
+
+</section><!-- #content end -->

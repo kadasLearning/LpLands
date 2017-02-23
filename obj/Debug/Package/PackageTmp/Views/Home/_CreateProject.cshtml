@@ -1,0 +1,70 @@
+﻿@model LandsDepartment.Models.ProjectInformation
+ <section id="content" style="margin-bottom: 0px;">
+
+            <div class="content-wrap">
+
+
+                <div class="container clearfix">
+
+						<div class="fancy-title title-double-border">
+						<h1>Manage Project</h1>
+					    </div>
+                    
+                    <form id="frmSaveProject"  class="nobottommargin">
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.ProjectID)
+
+							<div class="col_half">
+								<label for="register-form-password">Title :</label>
+                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Title" })
+							</div>
+
+							<div class="col_full">
+								<label for="register-form-repassword">Short Description:</label>
+                                @Html.TextAreaFor(m => m.shortDescription, new { @class = "form-control", placeholder = "Short Description" })
+							</div>
+
+                            <div class="col_full">
+								<label for="register-form-repassword">Long Description:</label>
+                                @Html.TextAreaFor(m => m.LongDesccription, new { @class = "form-control", placeholder = "Long Description" })
+							</div>
+
+                           
+
+                            <div class="col_full">
+								<label for="register-form-repassword">Image:</label>
+                                <input type="file" id="image"  />
+                               @* @Html.TextBoxFor(m => m.Image, new { @class = "form-control", placeholder = "URL" })*@
+							</div>
+                            <div class="col_full col_last">
+								<label for="register-form-repassword">Video:</label>
+                                <input type="file" id="Video"  />
+                               @* @Html.TextBoxFor(m => m.Image, new { @class = "form-control", placeholder = "URL" })*@
+							</div>
+
+                            <div class="col_full">
+								<label for="register-form-repassword">Show on Web:</label>
+                              @*  @Html.CheckBoxFor(model => (bool)model.ShowOnWeb)*@
+                               @* @Html.TextBoxFor(m => m.Image, new { @class = "form-control", placeholder = "URL" })*@
+							</div>
+
+                        <div class="clear"></div>
+                       
+							<div class="col_full nobottommargin">
+                            <input type="button" id="btnSaveProject" value="Save" class="button button-3d button-black" />
+							</div>
+                        
+                        
+						</form>
+
+                        
+                </div>
+      
+                
+                
+    </div>
+            <!-- #wrapper end -->
+
+            
+            
+        </section>  

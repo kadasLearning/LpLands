@@ -1,0 +1,55 @@
+﻿@model LandsDepartment.Models.News
+@{
+    ViewBag.Title = "NewsDetails";
+}
+
+<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>News Detail</h1>
+				<span>Complete News</span>
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li class="active">News</li>
+				</ol>
+			</div>
+
+		</section><!-- #page-title end -->
+
+<section id="content">
+
+			<div class="content-wrap">
+
+				<div class="container clearfix">
+
+                <div class="postcontent nobottommargin clearfix">
+
+                <h4>@Model.Title</h4>
+
+                <div class="fslider alignleft" data-arrows="false" style="width:250px;">
+							<div class="flexslider">
+								<div class="slider-wrap">
+                                    @if (Model.Image != null && Model.Image != "")
+                                    {
+                                        <div class="slide"><img src="@Url.Content("~/Content/NewsPics/" + @Model.Image)" alt="Slider 1"></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="slide"><img src="@Url.Content("~/Content/images/1.jpg")" alt="Slider 1"></div>
+                                    }
+									@*<div class="slide"><img src="images/portfolio/4/1.jpg" alt="Slider 1"></div>*@
+									
+								</div>
+							</div>
+						</div>
+
+						<p>@Model.Description</p>
+
+
+                </div>
+
+                </div>
+
+                </div>
+
+                </section>

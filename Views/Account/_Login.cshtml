@@ -1,0 +1,25 @@
+﻿@model LandsDepartment.Models.RegistrationViewModel
+
+<form id="login-form" name="login-form" class="nobottommargin" action="@Url.Action("Login","Account")" method="post">
+
+								<h3>Login to your Account</h3>
+
+								<div class="col_full">
+									<label for="login-form-username">Username:</label>
+                                    @Html.TextBoxFor(m => m.loginmodel.UserName, new { @class="form-control"  })
+									@*<input type="text" id="login-form-username" name="login-form-username" value="" class="form-control" />*@
+								</div>
+
+								<div class="col_full">
+									<label for="login-form-password">Password:</label>
+                                     @Html.PasswordFor(m => m.loginmodel.Password, new { @class="form-control"  })
+									@*<input type="password" id="login-form-password" name="login-form-password" value="" class="form-control" />*@
+								</div>
+
+								<div class="col_full nobottommargin div">
+									<button class="button button-3d nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+                                    @Html.ActionLink("Forgot Password", "ForgotPassword", "Account", null, new { value = "login", @class = "button button-3d nomargin" })
+									@*<button class="button button-3d nomargin" id="login-form-submit" name="login-form-submit" value="login">Forgot Password</button>*@
+								</div>
+
+</form>

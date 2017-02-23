@@ -1,0 +1,77 @@
+﻿ @model List<LandsDepartment.Models.News>
+@{
+    ViewBag.Title = "News";
+}
+
+<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>News</h1>
+				<span>List Details</span>
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li class="active">News</li>
+				</ol>
+			</div>
+
+		</section><!-- #page-title end -->
+
+<section id="content">
+
+			<div class="content-wrap">
+
+				<div class="container clearfix">
+
+                <div id="posts" class="events small-thumbs">
+
+                @foreach (var item in Model)
+                {
+                    <div class="entry clearfix">
+							<div class="entry-image">
+								<a href="#">
+									
+                                    @if(item.Image != null && item.Image != "")
+                            {
+                                        <img src="@Url.Content("~/Content/NewsPics/" + @item.Image)" alt="Inventore voluptates velit totam ipsa tenetur">
+                            }
+                                    else
+                                    {
+                        <img src="@Url.Content("~/Content/images/1.jpg")" alt="Inventore voluptates velit totam ipsa tenetur">
+                                    }
+									<div class="entry-date">@(item.CreatedDate.Value != null ? item.CreatedDate.Value.Day.ToString() : "")<span>@(item.CreatedDate.Value != null ? System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.CreatedDate.Value.Month).Substring(0, 3) : "")</span></div>
+								</a>
+							</div>
+							<div class="entry-c">
+								<div class="entry-title">
+									<h2><a href="#">@item.Title</a></h2>
+								</div>
+								<ul class="entry-meta clearfix">
+									@*<li><span class="label label-warning">Private</span></li>
+									<li><a href="#"><i class="icon-time"></i> 11:00 - 19:00</a></li>
+									<li><a href="#"><i class="icon-map-marker2"></i> Melbourne, Australia</a></li>*@
+								</ul>
+								<div class="entry-content">
+									@*<p>@item.Description</p>*@
+                                    @if (item.Description != null && item.Description.Length > 0 && item.Description.Length < 200)
+                        {
+                        <p>@item.Description</p>
+                            }
+                            else if (item.Description != null)
+                            {
+                            <p>@item.Description.Substring(0,200).ToString() + "..."</p>
+                            }   
+									<a href="@Url.Action("NewsDetails", "Home", new  { newsid = item.NewsID })" class="btn btn-danger">Read More</a>
+								</div>
+							</div>
+						</div>
+                }
+
+                
+
+                </div>
+
+                </div>
+
+			</div>
+
+		</section><!-- #content end -->

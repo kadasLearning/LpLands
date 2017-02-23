@@ -1,0 +1,49 @@
+﻿@model List<LandsDepartment.Models.News>
+<section id="content" style="margin-bottom: 0px;">
+            <div class="content-wrap">
+                <div class="container clearfix">
+                    <div class="fancy-title title-double-border">
+                        <h1>Manage News</h1> 
+                        <span style="float:right"><input type="button" id="CreateNews" value="Add News" class="btn btn-success btn-xs"  /></span>
+                    </div>
+                            
+                    <div class="table-responsive">
+                        <table class="table" id="userslist">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Title</th>
+                                    <th>Created On</th>
+                                   
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model)
+                            {
+                                  <tr>
+                                    <td>@item.Title</td>
+                                    
+                                    <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>
+                                    
+                                    <td>
+                                    
+                            <input type="button" id="editNews" value="Edit" class="btn btn-success btn-xl" title="@item.NewsID"  />
+
+                            <input type="button" id="deleteNews" value="Delete" class="btn btn-success btn-danger" title="@item.NewsID"  />
+                                       
+                                      
+                                        
+                                    </td>
+                                </tr>
+                            }
+                              
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+            </div>
+            <!-- #wrapper end -->
+        </section>

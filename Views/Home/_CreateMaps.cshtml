@@ -1,0 +1,61 @@
+﻿@model LandsDepartment.Models.Map
+ <section id="content" style="margin-bottom: 0px;">
+
+            <div class="content-wrap">
+
+
+                <div class="container clearfix">
+
+						<div class="fancy-title title-double-border">
+						<h1>Manage Map</h1>
+					    </div>
+                    
+                    <form id="frmSaveMap"  class="nobottommargin">
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.ID)
+
+							<div class="col_half">
+								<label for="register-form-password">Google ID:</label>
+                                @Html.TextBoxFor(m => m.GoogleID, new { @class = "form-control", placeholder = "Google Id" })
+							</div>
+
+							<div class="col_half col_last">
+								<label for="register-form-repassword">Title:</label>
+                                @Html.TextBoxFor(m => m.TITLE, new { @class = "form-control", placeholder = "Title" })
+							</div>
+
+                            <div class="col_half">
+								<label for="register-form-password">Langitude:</label>
+                                @Html.TextBoxFor(m => m.LANG, new { @class = "form-control", placeholder = "Langitude" })
+							</div>
+
+							<div class="col_half col_last">
+								<label for="register-form-repassword">Latitude:</label>
+                                @Html.TextBoxFor(m => m.LAT, new { @class = "form-control", placeholder = "Latitude" })
+							</div>
+
+                            <div class="col_full">
+								<label for="register-form-repassword">URL:</label>
+                                @Html.TextBoxFor(m => m.URL, new { @class = "form-control", placeholder = "URL" })
+							</div>
+
+                        <div class="clear"></div>
+                       
+							<div class="col_full nobottommargin">
+                            <input type="button" id="btnSaveMap" value="Save" class="button button-3d button-black" />
+							</div>
+                        
+                        
+						</form>
+
+                        
+                </div>
+      
+                
+                
+    </div>
+            <!-- #wrapper end -->
+
+            
+            
+        </section>  

@@ -1,0 +1,64 @@
+﻿@model LandsDepartment.Models.News
+ <section id="content" style="margin-bottom: 0px;">
+
+            <div class="content-wrap">
+
+
+                <div class="container clearfix">
+
+						<div class="fancy-title title-double-border">
+						<h1>Manage News</h1>
+					    </div>
+                    
+                    <form id="frmSaveMap1"  class="nobottommargin" action="@Url.Action("SaveNews", "Home")" enctype="multipart/form-data" method="post">
+                   
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.NewsID)
+
+							<div class="col_half">
+								<label for="register-form-password">Title :</label>
+                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Title" })
+							</div>
+
+							<div class="col_full">
+								<label for="register-form-repassword">Description:</label>
+                                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Description", col = "10", rows = "4" })
+							</div>
+
+                           
+
+                            <div class="col_full">
+								<label for="register-form-repassword">Image:</label>
+                                <input type="file" id="imgNews" name="imgNews"  />
+                            @* @Html.TextBoxFor("imgNews", new { Type = "file", placeholder = "Title" })*@
+                               
+							</div>
+
+                             <div class="col_full">
+								<label for="register-form-repassword">Show on Web:</label>
+                                @*@Html.CheckBoxFor(model => (bool)model.ShowOnWeb)*@
+                               @* @Html.TextBoxFor(m => m.Image, new { @class = "form-control", placeholder = "URL" })*@
+							</div>
+                            
+  
+
+                        <div class="clear"></div>
+                       
+							<div class="col_full nobottommargin">
+                            <input type="submit" id="btnSaveNews1" value="Save" class="button button-3d button-black" />
+							</div>
+                        
+                    
+						</form>
+
+                        
+                </div>
+      
+                
+                
+    </div>
+            <!-- #wrapper end -->
+
+            
+            
+        </section>  

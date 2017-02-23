@@ -1,0 +1,537 @@
+﻿@*@model LandsDepartment.Models.RegistrationViewModel*@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+           <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="SemiColonWeb" />
+
+    <!-- Stylesheets
+	============================================= -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/style.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/swiper.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/dark.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/font-icons.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/animate.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/magnific-popup.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/responsive.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/colors.css")" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    
+    <!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/rs-plugin/css/settings.css")" media="screen" />
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/rs-plugin/css/layers.css")"/>
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/rs-plugin/css/navigation.css")"/>
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.js")"></script>
+    
+    <style>
+
+		.revo-slider-emphasis-text {
+			font-size: 64px;
+			font-weight: 700;
+			letter-spacing: -1px;
+			font-family: 'Raleway', sans-serif;
+			padding: 15px 20px;
+			border-top: 2px solid #FFF;
+			border-bottom: 2px solid #FFF;
+		}
+
+		.revo-slider-desc-text {
+			font-size: 20px;
+			font-family: 'Lato', sans-serif;
+			width: 650px;
+			text-align: center;
+			line-height: 1.5;
+		}
+
+		.revo-slider-caps-text {
+			font-size: 16px;
+			font-weight: 400;
+			letter-spacing: 3px;
+			font-family: 'Raleway', sans-serif;
+		}
+		.tp-video-play-button { display: none !important; }
+
+		.tp-caption { white-space: nowrap; }
+
+	</style>
+
+
+    
+    <!-- Document Title
+	============================================= -->
+    <title>Home - Lands Department</title>
+
+    </head>
+<body class="stretched">
+
+
+@*<div id="body">*@
+        <div id="wrapper" class="clearfix">
+         <!-- Top Bar
+		============================================= -->
+		<div id="top-bar">
+
+			<div class="container clearfix">
+
+				<div class="col_half nobottommargin">
+
+					<!-- Top Links
+					============================================= -->
+					<div class="top-links">
+						<ul>
+							<li><a href="@Url.Action("Index", "Home")">Home</a></li>
+							<li><a href="faqs.html">FAQs</a></li>
+							<li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+							<li><a href="@Url.Action("Login", "Account")">Login</a>
+								<div class="top-link-section">
+									<form id="top-login" role="form" action="@Url.Action("LoginMain", "Account")" method="post">
+										<div class="input-group" id="top-login-username">
+											<span class="input-group-addon"><i class="icon-user"></i></span>
+                                             @*@Html.TextBoxFor(m => m.loginmodel.UserName, new { @class = "form-control", required = "required", placeholder = "Email address" })*@
+											<input id="emailaddress" name="emailaddress" type="email" class="form-control" placeholder="Email address" required="">
+										</div>
+										<div class="input-group" id="top-login-password">
+											<span class="input-group-addon"><i class="icon-key"></i></span>
+                                             @*@Html.PasswordFor(m => m.loginmodel.Password, new { @class = "form-control", required = "required", placeholder = "Password" })*@
+											<input id="userPassword" name="userPassword" type="password" class="form-control" placeholder="Password" required="">
+										</div>
+										@*<label class="checkbox">
+										  <input type="checkbox" value="remember-me"> Remember me
+										</label>*@
+										<button class="btn btn-danger btn-block" type="submit">Sign in</button>
+									</form>
+								</div>
+							</li>
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("LogOff", "Account")">Sign Out</a></li>
+                            }
+						</ul>
+					</div><!-- .top-links end -->
+
+				</div>
+
+				<div class="col_half fright col_last nobottommargin">
+
+					<!-- Top Social
+					============================================= -->
+					<div id="top-social">
+						<ul>
+							<li><a href="#" class="si-call"><span class="ts-icon"><i class="icon-call"></i></span><span class="ts-text">+204.430.9871</span></a></li>
+							<li><a href="#" class="si-email3"><span class="ts-icon"><i class="icon-email3"></i></span><span class="ts-text">contact@landsdepartment.ca</span></a></li>
+						</ul>
+					</div><!-- #top-social end -->
+
+				</div>
+
+			</div>
+
+		</div>
+        <!-- #top-bar end -->
+
+                	<header id="header">
+
+			<div id="header-wrap">
+
+				<div class="container clearfix">
+
+					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+					<!-- Logo
+					============================================= -->
+					<div id="logo">
+						<a href="@Url.Action("Index", "Home")" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="@Url.Content("~/Content/images/logo.png")" alt="Canvas Logo"></a>
+						<a href="@Url.Action("Index", "Home")" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="@Url.Content("~/Content/images/logo@2x.png")" alt="Canvas Logo"></a>
+					</div><!-- #logo end -->
+
+					<!-- Primary Navigation
+					============================================= -->
+					<nav id="primary-menu" class="sub-title">
+
+						<ul>
+							
+							
+							<li><a href="@Url.Action("About", "Home")"><div>History</div><span>Find Application</span></a></li>
+                            <li><a href="@Url.Action("News", "Home")"><div>News</div><span>What's Trending</span></a></li>
+                            <li><a href="@Url.Action("Projects", "Home")"><div>Projects</div><span>Current Work</span></a>
+								<ul>
+                                @{
+                                    
+                                    LandsDepartment.Models.LandsDBEntities db = new LandsDepartment.Models.LandsDBEntities();
+                                    foreach (var item in db.ProjectInformations.Where(p => p.isDeleted == false || p.isDeleted == null).ToList())
+                                    {
+                                    <li><a href="#"><div>@item.Title</div></a></li>
+                                    }
+								}	
+								</ul>
+							</li>
+                            <li><a href="@Url.Action("Forms", "Home")"><div>Forms</div><span>Find Applications</span></a></li>
+                            <li><a href="#"><div>Maps</div><span>Wonderful Maps</span></a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="@Url.Action("ManageUsers", "Home")"><div>Dashboard</div><span>View Dashboard</span></a>
+                                <ul>
+									<li><a href="@Url.Action("LogOff", "Account")"><div>Sign Out</div></a></li>
+								</ul>
+                                </li>
+                            }
+							
+						</ul>
+
+
+					</nav><!-- #primary-menu end -->
+
+				</div>
+
+			</div>
+
+		</header> 
+
+        @if (User.Identity.IsAuthenticated && (Url.RequestContext.HttpContext.Request.Url.AbsolutePath.EndsWith("ManageUsers")))
+        {
+            <section id="page-title" style="background-color: #2b2b2b; border-bottom: 0px solid #2b2b2b">
+            
+			<div class="container clearfix" style="color: #ffffff;">
+				<div class="testi-image" style="margin-right:30px;">
+                    <img src="@Url.Content("~/Content/images/profilepics/2.jpg")" alt="Customer Testimonails" draggable="false">
+			</div>
+                <h1 style="color: #fff;">John Doe</h1>
+				@if (User.IsInRole("Admin"))
+    {<span style="color: #fff;"> Administrator</span> }
+    else if (User.IsInRole("User"))
+    {<span style="color: #fff;"> User</span> }
+    else
+    {<span style="color: #fff;"> Super Admin</span> }
+			</div>
+
+		</section>
+        
+        <div id="page-menu" class="no-sticky">
+
+			<div id="page-menu-wrap">
+
+				<div class="container clearfix">
+
+					<div class="menu-title">Admin <span>Panel</span></div>
+
+					<nav>
+						<ul>
+                        @if (User.IsInRole("User"))
+                        {
+                            <li><a href="#" id="editProfile"><div>Edit Profile</div></a></li>
+                            <li><a href="#"  id="changePassword"><div>Change Password</div></a></li>
+                        }
+                        else if (User.IsInRole("Admin") || User.IsInRole("Super Admin"))
+                        {
+                            <li><a href="#" id="usersroles"><div>Users & Roles</div></a></li>
+							<li><a href="#" id="mapslink"><div>Maps</div></a></li>
+							<li><a href="#" id="projectslink"><div>Projects</div></a></li>
+                            <li><a href="#" id="newslink"><div>News</div></a></li>
+							<li><a href="#" id="editProfile"><div>Edit Profile</div></a></li>
+                            <li><a href="#" id="changePassword"><div>Change Password</div></a></li>
+                        }
+							
+							
+						</ul>
+					</nav>
+
+				<div id="page-submenu-trigger"><i class="icon-reorder"></i></div>
+
+				</div>
+
+			</div>
+
+		</div>
+        }
+
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        
+       <footer id="footer" class="dark">
+            <div class="container">
+                <!-- Footer Widgets
+				============================================= -->
+                <div class="footer-widgets-wrap clearfix">
+                    <div class="col_two_third">
+                        <div class="col_one_third">
+                            <div class="widget clearfix">
+                                <!--<img src="" alt="" class="footer-logo">-->
+                                <h3>Contact Us</h3>
+                                <div style="background: url('@Url.Content("~/Content/images/world-map.png")') no-repeat center center; background-size: 100%;"> 
+                                <address>
+										<strong>Street Address:</strong><br>
+										Rufus Prince Building  <br>
+                                        5000 Cresent Road West <br>
+										Portage la Prairie, MB<br>
+								</address> 
+                                <abbr title="Phone Number"><strong>Phone:</strong></abbr> (204) 857-6442
+                                        <br> <abbr title="Fax"><strong>Fax:</strong></abbr> (204) 857-6684
+                                        <br> <abbr title="Email Address"><strong>Email:</strong></abbr> info@lplands.ca</div>
+                            </div>
+                        </div>
+                        <div class="col_one_third">
+                            <div class="widget widget_links clearfix">
+                                <h4>Useful Links</h4>
+                                <ul>
+                                    <li><a href="@Url.Action("Forms", "Home")">Forms and Applications</a></li>
+                                    <li><a href="http://www.lpet.ca/HRMS/JobViewApply" target="_blank">Career Opportunities</a></li>
+                                    <li><a href="@Url.Action("News", "Home")">News and Updates</a></li>
+                                    <li><a href="http://www.lpet.ca/HRMS/Public/SponsorshipList" target="_blank">Training Opportunities</a></li>
+                                    <li><a href="#">Community Services</a></li>
+                                    <li><a href="#">Follow us on Facebook</a></li>
+                                    <li><a href="#">Our Maps Gallery</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col_one_third col_last">
+                            <div class="widget clearfix">
+                                <h4>Services</h4>
+                                <div id="post-list-footer">
+                                <li><a href="#">Get your lands mapped on paper</a></li>
+                                <li><a href="#">Pixel perfect digital display of land maps</a></li>
+                                <li><a href="#">Track changes in Land chemistry over time</a></li>
+                                <li><a href="#">Measure land sites</a></li>
+                                <li><a href="#">Stream live from land sites</a></li>
+                                <li><a href="#">Landscape designs</a></li>
+                                <li><a href="#">Virtual tours</a></li>
+
+                                @*@{
+
+                                    foreach (var item in db.News.Take(3).ToList())
+                                    {
+                                     <div class="spost clearfix">
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a href="#">@item.Title</a></h4> </div>
+                                            <ul class="entry-meta">
+                                                <li>@( item.CreatedDate != null ? @item.CreatedDate.Value.ToShortDateString() : "")</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    }
+                                }*@
+
+                                    @*<div class="spost clearfix">
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a href="#">Second Latest News Post</a></h4> </div>
+                                            <ul class="entry-meta">
+                                                <li>3 January 2017</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="spost clearfix">
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a href="#">Third Latest News post</a></h4> </div>
+                                            <ul class="entry-meta">
+                                                <li>1 January 2017</li>
+                                            </ul>
+                                        </div>
+                                    </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col_one_third col_last">
+                        <div class="widget subscribe-widget clearfix">
+                            <div class="alignright gmap" id="google-map2" > @*style="width: 280px; height: 170px; position: relative; overflow: hidden;">*@
+                                <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);">
+                                    <div class="gm-err-container">
+                                        <div class="gm-err-content">
+                                            <a href="http://www.accuweather.com/en/ca/portage-la-prairie/r1n/weather-forecast/48994" class="aw-widget-legal">
+<!--
+By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
+-->
+</a><div id="awcc1487149380739" class="aw-widget-current"  data-locationkey="48994" data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1487149380739"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .footer-widgets-wrap end -->
+            </div>
+            <!-- Copyrights
+			============================================= -->
+            <div id="copyrights">
+                <div class="container clearfix">
+                    <div class="col_half"> Copyrights &copy; @DateTime.Now.Year All Rights Reserved by Lands Department.
+                        <br>
+                        <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+                    </div>
+                    <div class="col_half col_last tright"> <i class="icon-envelope2"></i> info@lplands.ca <span class="middot">&middot;</span> <i class="icon-headphones"></i> +(204) 857-6442 <span class="middot">&middot;</span> <i class="icon-skype2"></i> lplands </div>
+                </div>
+            </div>
+            <!-- #copyrights end -->
+        </footer>
+        </div>
+@*         </div>*@
+    <!-- #wrapper end -->
+
+    <!-- Go To Top
+	============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+    <!-- External JavaScripts
+	============================================= -->
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/plugins.js")"></script>
+    @*<script type="text/javascript" src="@Url.Content("~/Content/js/bs-filestyle.js")"></script>*@
+
+
+    <!-- Footer Scripts
+	============================================= -->
+    <script type="text/javascript" src="@Url.Content("~/Content/js/functions.js")"></script>
+    
+    <!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/jquery.themepunch.tools.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/jquery.themepunch.revolution.min.js")"></script>
+
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/extensions/revolution.extension.video.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/extensions/revolution.extension.slideanims.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/extensions/revolution.extension.actions.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/extensions/revolution.extension.kenburn.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/extensions/revolution.extension.navigation.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/extensions/revolution.extension.migration.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/extensions/revolution.extension.parallax.min.js")"></script>
+
+	<script type="text/javascript">
+
+		var tpj=jQuery;
+		tpj.noConflict();
+
+		tpj(document).ready(function() {
+
+			var apiRevoSlider = tpj('.tp-banner').show().revolution(
+			{
+				sliderType:"standard",
+				jsFileLocation:"@Url.Content("~/Content/rs-plugin/js/")",
+				sliderLayout:"fullwidth",
+				dottedOverlay:"none",
+				delay:16000,
+				startwidth:1140,
+				startheight:600,
+				hideThumbs:200,
+
+				thumbWidth:100,
+				thumbHeight:50,
+				thumbAmount:5,
+
+				navigation: {
+					keyboardNavigation:"off",
+					keyboard_direction: "horizontal",
+					mouseScrollNavigation:"off",
+					onHoverStop:"off",
+					touch:{
+						touchenabled:"on",
+						swipe_threshold: 75,
+						swipe_min_touches: 1,
+						swipe_direction: "horizontal",
+						drag_block_vertical: false
+					},
+					arrows: {
+                        style: "hermes",
+                        enable: true,
+                        hide_onmobile: false,
+                        hide_onleave: false,
+                        tmp: '<div class="tp-arr-allwrapper">	<div class="tp-arr-imgholder"></div>	<div class="tp-arr-titleholder">{{title}}</div>	</div>',
+                        left: {
+                            h_align: "left",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        },
+                        right: {
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        }
+                    }
+				},
+
+				touchenabled:"on",
+				onHoverStop:"on",
+
+				swipe_velocity: 0.7,
+				swipe_min_touches: 1,
+				swipe_max_touches: 1,
+				drag_block_vertical: false,
+
+				parallax:"mouse",
+				parallaxBgFreeze:"on",
+				parallaxLevels:[7,4,3,2,5,4,3,2,1,0],
+
+				keyboardNavigation:"off",
+
+				navigationHAlign:"center",
+				navigationVAlign:"bottom",
+				navigationHOffset:0,
+				navigationVOffset:20,
+
+				soloArrowLeftHalign:"left",
+				soloArrowLeftValign:"center",
+				soloArrowLeftHOffset:20,
+				soloArrowLeftVOffset:0,
+
+				soloArrowRightHalign:"right",
+				soloArrowRightValign:"center",
+				soloArrowRightHOffset:20,
+				soloArrowRightVOffset:0,
+
+				shadow:0,
+				fullWidth:"on",
+				fullScreen:"off",
+
+				spinner:"spinner4",
+
+				stopLoop:"off",
+				stopAfterLoops:-1,
+				stopAtSlide:-1,
+
+				shuffle:"off",
+
+				autoHeight:"off",
+				forceFullWidth:"off",
+				hideTimerBar:"on",
+
+
+				hideThumbsOnMobile:"off",
+				hideNavDelayOnMobile:1500,
+				hideBulletsOnMobile:"off",
+				hideArrowsOnMobile:"off",
+				hideThumbsUnderResolution:0,
+
+				hideSliderAtLimit:0,
+				hideCaptionAtLimit:0,
+				hideAllCaptionAtLilmit:0,
+				startWithSlide:0,
+			});
+
+			apiRevoSlider.bind("revolution.slide.onloaded",function (e) {
+				setTimeout( function(){ SEMICOLON.slider.sliderParallaxDimensions(); }, 200 );
+			});
+
+			apiRevoSlider.bind("revolution.slide.onchange",function (e,data) {
+				SEMICOLON.slider.revolutionSliderMenu();
+			});
+
+		});
+
+
+	</script>
+
+    </body>
+</html>

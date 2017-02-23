@@ -1,0 +1,670 @@
+﻿@model List<LandsDepartment.Models.aspnet_Membership>
+@{
+    ViewBag.Title = "ManageUsers";
+}
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/DTGrid/jquery.dataTables.min.css")"/>
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/DTGrid/rowReorder.dataTables.min.css")"/>
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/DTGrid/responsive.dataTables.min.css")"/>
+
+<script type="text/javascript" src="@Url.Content("~/Content/DTGrid/jquery.dataTables.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Content/DTGrid/dataTables.rowReorder.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Content/DTGrid/dataTables.responsive.min.js")"></script>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+$(document).ready(function () {
+
+
+initDataTable();
+
+function initDataTable() {
+    $('#userslist').dataTable({
+        rowReorder: false,
+        responsive: true,
+        "sDom": '<"H"fr>t<"F"ip>'
+
+
+
+    });
+    }
+
+    $("body").on("click", "#editProfile", function (evt) {
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EditProfile", "Home")',
+//                data: "id=" + $(this).attr("value"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+        
+
+            $("body").on("click", "#CreateNewUser", function (evt) {
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CreateNewUser", "Home")',
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+
+     $("body").on("click", "#changePassword", function (evt) {
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ChangePassword", "Home")',
+//                data: "id=" + $(this).attr("value"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+
+        $("body").on("click", "#usersroles", function (evt) {
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UsersnRoles", "Home")',
+                //                data: "id=" + $(this).attr("value"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+                    initDataTable();
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+         $("body").on("click", "#changeUserPassword", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ChangeUserPassword", "Home")',
+                                data: "userid=" + $(this).attr("title"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+        $("body").on("click", "#mapslink", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ManageMaps", "Home")',
+                               // data: "userid=" + $(this).attr("title"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+                    initDataTable();
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+        
+        $("body").on("click", "#CreateMap", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CreateMap", "Home")',
+                               // data: "userid=" + $(this).attr("title"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+        $("body").on("click", "#editMaps", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CreateMap", "Home")',
+                                data: "ID=" + $(this).attr("title"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+        $("body").on("click", "#deleteMaps", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteMap", "Home")',
+                                data: "ID=" + $(this).attr("title"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+        $("body").on("click", "#newslink", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ManageNews", "Home")',
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+        $("body").on("click", "#CreateNews", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CreateNews", "Home")',
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+        $("body").on("click", "#editNews", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CreateNews", "Home")',
+                                data: "ID=" + $(this).attr("title"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+        
+
+        $("body").on("click", "#deleteNews", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteNews", "Home")',
+                                data: "ID=" + $(this).attr("title"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+
+        // Manage Projects
+
+        $("body").on("click", "#projectslink", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ManageProjects", "Home")',
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+        $("body").on("click", "#CreateProject", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CreateProject", "Home")',
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+
+        $("body").on("click", "#editProject", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CreateProject", "Home")',
+                                data: "ID=" + $(this).attr("title"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+        
+
+        $("body").on("click", "#deleteProject", function (evt) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteProject", "Home")',
+                                data: "ID=" + $(this).attr("title"),
+                success: function (data, textStatus, XMLHttpRequest) {
+                    $("#dataView").html(data);
+
+                    $('#dataView').fadeIn('slow');
+                },
+                error: function () {
+                    alert('Error in Editing');
+                }
+            });
+
+        });
+
+        //
+            $("body").on("click", "#frmChangePasswordSubmit", function (evt) {
+
+   // var frmVlalidation = $("#frmChangePassword").valid();
+
+    $('#frmChangePassword').submit(function(evt) {
+    evt.preventDefault();
+    });
+
+        //if (frmVlalidation == true) 
+       // {
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("PassChange", "Home")",
+                data: $("#frmChangePassword").serialize(),
+                success: function (data) {
+//                    $("#Activitieslist").html(data);
+
+
+//                     $('#showActivities').fadeOut('slow');
+
+                        if(data.Message == "Success")
+                        {
+                        $("#result").html("Password Updated Sucessfully");
+                        $("#result").css({
+                            "background-color": "#18bd43"
+                        });
+                        }
+                        else{
+                         $("#result").html("Error in Password Updation");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                        }
+                         $("#result").show().delay(5000).fadeOut();
+                },
+                error: function (result) {
+                $("#result").html("Error in Password Updation");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                $("#result").show().delay(5000).fadeOut();
+                }
+            });
+          //  }
+
+            return false;
+        });
+
+
+
+        //
+
+
+        //change users password
+
+             $("body").on("click", "#frmChangeUserPasswordSubmit", function (evt) {
+
+    $('#frmChangeUserPassword').submit(function(evt) {
+    evt.preventDefault();
+    });
+
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("UpdateUserPassword", "Home")",
+                data: $("#frmChangeUserPassword").serialize(),
+                success: function (data) {
+
+                        if(data.Message == "Success")
+                        {
+                        
+                        $("#dataView").html(data);
+                        $('#dataView').fadeIn('slow');
+
+                        $("#result").html("Password Updated Sucessfully");
+                        $("#result").css({
+                            "background-color": "#18bd43"
+                        });
+                        }
+                        else{
+                         $("#result").html("Error in Password Updation");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                        }
+                         $("#result").show().delay(5000).fadeOut();
+                },
+                error: function (result) {
+                $("#result").html("Error in Password Updation");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                $("#result").show().delay(5000).fadeOut();
+                }
+            });
+
+            return false;
+        });
+        //
+
+
+        //Save Map
+        $("body").on("click", "#btnSaveMap", function (evt) {
+
+    $('#frmSaveMap').submit(function(evt) {
+    evt.preventDefault();
+    });
+
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SaveMaps", "Home")",
+                data: $("#frmSaveMap").serialize(),
+                success: function (data) {
+
+                        if(data.Message != "Error")
+                        {
+                        $("#dataView").html('');
+                        $("#dataView").html(data);
+                        $('#dataView').fadeIn('slow');
+
+                        $("#result").html("Map Saved Sucessfully");
+                        $("#result").css({
+                            "background-color": "#18bd43"
+                        });
+                        }
+                        else{
+                         $("#result").html("Error in Map Saving");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                        }
+                         $("#result").show().delay(5000).fadeOut();
+                },
+                error: function (result) {
+                $("#result").html("Error in Map Saving");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                $("#result").show().delay(5000).fadeOut();
+                }
+            });
+
+            return false;
+        });
+        //End Save map
+
+        // Save News
+
+         $("body").on("click", "#btnSaveNews", function (evt) {
+
+    $('#frmSaveMap').submit(function(evt) {
+    evt.preventDefault();
+    });
+
+   // var formData = new FormData();
+            var newsthumbnail = document.getElementById("imgNews").files[0];
+           
+//var formdata = new FormData();
+//formData.append("imgNews", newsthumbnail);
+    
+   
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "@Url.Action("SaveNews", "Home")",
+                data:  $("#frmSaveMap").serialize() +'&imgNews='+document.getElementById("imgNews").files[0],
+                success: function (data) {
+
+                        if(data.Message != "Error")
+                        {
+                        $("#dataView").html('');
+                        $("#dataView").html(data);
+                        $('#dataView').fadeIn('slow');
+
+                        $("#result").html("News Saved Sucessfully");
+                        $("#result").css({
+                            "background-color": "#18bd43"
+                        });
+                        }
+                        else{
+                         $("#result").html("Error in News Saving");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                        }
+                         $("#result").show().delay(5000).fadeOut();
+                },
+                error: function (result) {
+                $("#result").html("Error in News Saving");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                $("#result").show().delay(5000).fadeOut();
+                }
+            });
+
+            return false;
+        });
+
+        // End Save News
+
+
+
+        // Save Project
+
+         $("body").on("click", "#btnSaveProject", function (evt) {
+
+    $('#frmSaveProject').submit(function(evt) {
+    evt.preventDefault();
+    });
+
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SaveProject", "Home")",
+                data: $("#frmSaveProject").serialize(),
+                success: function (data) {
+
+                        if(data.Message != "Error")
+                        {
+                        $("#dataView").html('');
+                        $("#dataView").html(data);
+                        $('#dataView').fadeIn('slow');
+
+                        $("#result").html("Project Saved Sucessfully");
+                        $("#result").css({
+                            "background-color": "#18bd43"
+                        });
+                        }
+                        else{
+                         $("#result").html("Error in Project Saving");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                        }
+                         $("#result").show().delay(5000).fadeOut();
+                },
+                error: function (result) {
+                $("#result").html("Error in Project Saving");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                $("#result").show().delay(5000).fadeOut();
+                }
+            });
+
+            return false;
+        });
+
+        // End Save Project
+
+
+        //Save Profile
+        $("body").on("click", "#btnEditProfileSubmit", function (evt) {
+
+    $('#frmEditProfile').submit(function(evt) {
+    evt.preventDefault();
+    });
+
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SaveProfile", "Home")",
+                data: $("#frmEditProfile").serialize(),
+                success: function (data) {
+
+                        if(data.Message != "Error")
+                        {
+//                        $("#dataView").html('');
+//                        $("#dataView").html(data);
+//                        $('#dataView').fadeIn('slow');
+
+                        $("#result").html("Profile Saved Sucessfully");
+                        $("#result").css({
+                            "background-color": "#18bd43"
+                        });
+                        }
+                        else{
+                         $("#result").html("Error in Profile Saving");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                        }
+                         $("#result").show().delay(5000).fadeOut();
+                },
+                error: function (result) {
+                $("#result").html("Error in Profile Saving");
+                $("#result").css({
+                            "background-color": "red"
+                        });
+                $("#result").show().delay(5000).fadeOut();
+                }
+            });
+
+            return false;
+        });
+        //End Save Profile
+
+
+    });
+
+
+
+
+    
+
+            </script>
+
+
+
+<div id="result" style="background-color:#18bd43;color:White;text-align: center;"></div>
+
+
+
+
+<div id="dataView">
+
+@Html.Partial("_ManageUsers",Model)
+
+</div>

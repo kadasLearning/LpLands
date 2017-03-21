@@ -34,7 +34,7 @@
 
 						<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
-						<form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
+						<form class="nobottommargin" id="template-contactform" name="template-contactform" action="#" method="post">
 
 							<div class="form-process"></div>
 
@@ -83,7 +83,7 @@
 							</div>
 
 							<div class="col_full">
-								<button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">Submit Comment</button>
+								<button name="submit" type="submit" id="btnsave" tabindex="5" value="Submit" class="button button-3d nomargin">Submit Comment</button>
 							</div>
 
 						</form>
@@ -95,27 +95,22 @@
 
 
                                 $("body").on("click", "#btnsave", function (evt) {
-                                    var frmVlalidation = $("#template-contactform").valid();
+                                    //var frmVlalidation = $("#template-contactform").valid();
 
 
-                                    if (frmVlalidation == true) {
+                                    // if (frmVlalidation == true) {
 
-                                        $.ajax({
-                                            url: '@Url.Action("SaveContact", "Home")',
-                                            data: $('#template-contactform').serialize(),
-                                            cache: false,
-                                            type: "POST",
-                                            dataType: "html",
-                                            success: function (data, textStatus, XMLHttpRequest) {
-                                                if (data.Data == "Success") {
-                                                    alert('Thanks for your Interest in LandsDepartment, Our Representative Will Contact You');
-                                                }
-                                                else {
-                                                    alert('Error Occurred Please try again');
-                                                }
-                                            }
-                                        });
-                                    }
+                                    $.ajax({
+                                        url: '@Url.Action("SaveContact", "Home")',
+                                        data: $('#template-contactform').serialize(),
+                                        cache: false,
+                                        type: "POST",
+                                        dataType: "html",
+                                        success: function (data, textStatus, XMLHttpRequest) {
+                                                alert('Thanks for your Interest in LandsDepartment, Our Representative Will Contact You');
+                                        }
+                                    });
+                                    //}
                                     return false;
                                 });
 
@@ -128,24 +123,7 @@
 
 						</script>
 
-						@*<script type="text/javascript">
-
-						    $("#template-contactform").validate({
-						        submitHandler: function (form) {
-						            $('.form-process').fadeIn();
-						            $(form).ajaxSubmit({
-						                target: '#contact-form-result',
-						                success: function () {
-						                    $('.form-process').fadeOut();
-						                    $('#template-contactform').find('.sm-form-control').val('');
-						                    $('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
-						                    SEMICOLON.widget.notifications($('#contact-form-result'));
-						                }
-						            });
-						        }
-						    });
-
-						</script>*@
+						
 
 					</div><!-- Contact Form End -->
 
@@ -158,40 +136,7 @@
                         </iframe>
                         </section>
 
-					@*	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-						<script type="text/javascript" src="~/Scripts/jquery.gmap.js"></script>
-
-						<script type="text/javascript">
-
-						    jQuery('#google-map').gMap({
-
-						        address: 'Portage la Prairie, Manitoba, Canada',
-						        maptype: 'ROADMAP',
-						        zoom: 14,
-						        markers: [
-									{
-									    address: "Portage la Prairie , Manitoba, Canada",
-									    html: '', //'<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Envato</span></h4><p class="nobottommargin">Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
-									    icon: {
-									        image: "images/icons/map-icon-red.png",
-									        iconsize: [32, 39],
-									        iconanchor: [32, 39]
-									    }
-									}
-								],
-						        doubleclickzoom: false,
-						        controls: {
-						            panControl: true,
-						            zoomControl: true,
-						            mapTypeControl: true,
-						            scaleControl: false,
-						            streetViewControl: false,
-						            overviewMapControl: false
-						        }
-
-						    });
-
-						</script>*@
+					
 
 					</div><!-- Google Map End -->
 

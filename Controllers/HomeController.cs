@@ -21,7 +21,7 @@ namespace LandsDepartment.Controllers
 
         public ActionResult News()
         {
-            List<News> objnews = db.News.ToList();
+            List<News> objnews = db.News.Where(n => n.ShowOnWeb == null || n.ShowOnWeb == true).ToList();
             return View(objnews);
         }
 
@@ -39,12 +39,77 @@ namespace LandsDepartment.Controllers
             return View();
         }
 
+        public ActionResult Faq()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+
+
+
+        public ActionResult LandManagement()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+
+        public ActionResult Gallery()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+
+        public ActionResult MapGallery()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+
+        public ActionResult CommunityProfile()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+
+        public ActionResult MapsView()
+        {
+            List<Map> objlist = db.Maps.ToList();
+            return View(objlist);
+        }
+
+        public ActionResult MapDetailView(int mapId)
+        {
+            Map objmap = db.Maps.SingleOrDefault(m => m.ID == mapId);
+            return View(objmap);
+        }
+        
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
+
+        public ActionResult Analytics()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult LandCode()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
 
         [HttpPost]
         public ActionResult SaveContact(ContactUsViewModel model)
@@ -284,20 +349,58 @@ namespace LandsDepartment.Controllers
             if (ID != 0)
                 obj = db.Maps.SingleOrDefault(m => m.ID == ID);
 
+            //ViewBag.MapTypes = new List<SelectListItem> { 
+            //new SelectListItem {Text = "Image",Value="Image"},
+            //new SelectListItem {Text = "Video",Value="Video"}
+            //};
+
             return PartialView("_CreateMaps", obj);
         }
 
-
-        public ActionResult SaveMaps(Map model)
+        [HttpPost]
+        public ActionResult SaveMaps(Map model,string ddlMapType,string ddlProvince, HttpPostedFileBase thumbnail,HttpPostedFileBase mapImage)
         {
             
                 if (model.ID == 0)
                 {
+                    if (ddlMapType != null && ddlMapType == "Video")
+                        model.MapType = true;
+                    else
+                        model.MapType = false;
+
+                    if (ddlProvince != null)
+                        model.Province = ddlProvince;
+
                     db.Maps.AddObject(model);
                     db.SaveChanges();
 
-                    List<Map> objmaps = db.Maps.ToList();
-                    return PartialView("_ManageMaps", objmaps);
+                    if (thumbnail != null)
+                    {
+                        string[] fileExt = thumbnail.FileName.Split('.');
+                        string fileName = Server.MapPath("~\\Content\\Images\\maps\\thumbnail\\") + model.ID + "." + fileExt[1];
+
+                        thumbnail.SaveAs(fileName);
+
+                        model.Thumbnail = model.ID + "." + fileExt[1];
+                        db.ObjectStateManager.ChangeObjectState(model, System.Data.EntityState.Modified);
+                        db.SaveChanges();
+                    }
+
+                    if (mapImage != null)
+                    {
+                        string[] fileExt = mapImage.FileName.Split('.');
+                        string fileName = Server.MapPath("~\\Content\\Images\\maps\\pics\\") + model.ID + "." + fileExt[1];
+
+                        mapImage.SaveAs(fileName);
+
+                        model.URL = model.ID + "." + fileExt[1];
+                        db.ObjectStateManager.ChangeObjectState(model, System.Data.EntityState.Modified);
+                        db.SaveChanges();
+                    }
+
+                    return RedirectToAction("ManageUsers");
+                    //List<Map> objmaps = db.Maps.ToList();
+                    //return PartialView("_ManageMaps", objmaps);
                     //return Json(new { Message = "Success", Model = objmaps }, JsonRequestBehavior.AllowGet);
                 }
                 else
@@ -310,12 +413,49 @@ namespace LandsDepartment.Controllers
                       obj.LAT = model.LAT;
                       obj.TITLE = model.TITLE;
                       obj.URL = model.URL;
+                      obj.City = model.City;
+                      obj.Description = model.Description;
+                      obj.Line1 = model.Line1;
+                      obj.Line2 = model.Line2;
+                      obj.Zip = model.Zip;
+
+                      if (ddlMapType != null && ddlMapType == "Video")
+                          model.MapType = true;
+                      else
+                          model.MapType = false;
+
+                      if (ddlProvince != null)
+                          model.Province = ddlProvince;
+
+                      if (thumbnail != null)
+                      {
+                          string[] fileExt = thumbnail.FileName.Split('.');
+                          string fileName = Server.MapPath("~\\Content\\Images\\maps\\thumbnail\\") + model.ID + "." + fileExt[1];
+
+                          thumbnail.SaveAs(fileName);
+
+                          model.Thumbnail = model.ID + "." + fileExt[1];
+                          //db.ObjectStateManager.ChangeObjectState(model, System.Data.EntityState.Modified);
+                          //db.SaveChanges();
+                      }
+
+                      if (mapImage != null)
+                      {
+                          string[] fileExt = mapImage.FileName.Split('.');
+                          string fileName = Server.MapPath("~\\Content\\Images\\maps\\pics\\") + model.ID + "." + fileExt[1];
+
+                          mapImage.SaveAs(fileName);
+
+                          model.URL = model.ID + "." + fileExt[1];
+                         
+                      }
 
                       db.ObjectStateManager.ChangeObjectState(obj, System.Data.EntityState.Modified);
                       db.SaveChanges();
 
-                      List<Map> objmaps = db.Maps.ToList();
-                      return PartialView("_ManageMaps", objmaps);
+                      return RedirectToAction("ManageUsers");
+                      //List<Map> objmaps = db.Maps.ToList();
+                      //return PartialView("_ManageMaps", objmaps);
                       //return Json(new { Message = "Success", Model = objmaps }, JsonRequestBehavior.AllowGet);
             
             
@@ -395,6 +535,7 @@ namespace LandsDepartment.Controllers
                     obj.Description = model.Description;
                     obj.Title = model.Title;
                     obj.ModifiedDate = System.DateTime.Now;
+                    obj.ShowOnWeb = model.ShowOnWeb;
                     // Image updation
 
                    
@@ -617,6 +758,16 @@ namespace LandsDepartment.Controllers
                 default:
                     return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
             }
+        }
+
+
+        public FileResult Download(int mapId)
+        {
+            Map objmap = db.Maps.SingleOrDefault(m => m.ID == mapId);
+          string imgpath =  Server.MapPath("~\\Content\\Images\\maps\\pics\\") + objmap.URL;
+          byte[] fileBytes = System.IO.File.ReadAllBytes(imgpath);
+          string fileName = objmap.URL;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
         
     }

@@ -72,7 +72,7 @@
 								data-elementdelay="0.01"
 								data-endelementdelay="0.1"
 								data-endspeed="1000"
-								data-endeasing="Power4.easeIn" style="z-index: 3;"><a href="#" class="button button-large button-rounded tright nomargin"><span>Who are we?</span><i class="icon-angle-right"></i></a></div>
+								data-endeasing="Power4.easeIn" style="z-index: 3;"><a href="@Url.Action("About", "Home")" class="button button-large button-rounded tright nomargin"><span>Who are we?</span><i class="icon-angle-right"></i></a></div>
 
 							</li>
                              
@@ -139,7 +139,7 @@
 								data-elementdelay="0.01"
 								data-endelementdelay="0.1"
 								data-endspeed="1000"
-								data-endeasing="Power4.easeIn"><a href="#" class="button button-3d button-large button-rounded button-green"><span>Browse Maps</span> <i class="icon-angle-right"></i></a></div>
+								data-endeasing="Power4.easeIn"><a href="@Url.Action("MapsView", "Home")" class="button button-3d button-large button-rounded button-green"><span>Browse Maps</span> <i class="icon-angle-right"></i></a></div>
 
 							</li>
                             
@@ -150,7 +150,7 @@
 								<!-- LAYERS -->
 
 								<!-- LAYER NR. 1 -->
-								<div class="tp-fade fadeout fullscreenvideo rs-background-video-layer"
+								@*<div class="tp-fade fadeout fullscreenvideo rs-background-video-layer"
 									data-forcerewind="on"
 									data-volume="mute"
 									data-videowidth="100%"
@@ -164,7 +164,7 @@
 									data-autoplayonlyfirsttime="false"
 									data-nextslideatend="true"
 									>
-								</div>
+								</div>*@
 
 								<div class="tp-caption customin ltl tp-resizeme revo-slider-emphasis-text nopadding noborder"
 								data-x="116"
@@ -206,7 +206,7 @@
 								data-elementdelay="0.01"
 								data-endelementdelay="0.1"
 								data-endspeed="1000"
-								data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap;"><a href="#" class="button button-border button-white button-light button-large button-rounded tright nomargin"><span>Learn More</span> <i class="icon-angle-right"></i></a></div>
+								data-endeasing="Power4.easeIn" style="z-index: 3; white-space: nowrap;"><a href="@Url.Action("About", "Home")" class="button button-border button-white button-light button-large button-rounded tright nomargin"><span>Learn More</span> <i class="icon-angle-right"></i></a></div>
 
 							</li>
                             
@@ -270,13 +270,13 @@
 								data-elementdelay="0.01"
 								data-endelementdelay="0.1"
 								data-endspeed="1000"
-								data-endeasing="Power4.easeIn"><a href="#" class="button button-border button-white button-light button-large button-rounded tright nomargin"><span>Click me!</span> <i class="icon-angle-right"></i></a></div>
+								data-endeasing="Power4.easeIn"><a href="@Url.Action("Projects", "Home")" class="button button-border button-white button-light button-large button-rounded tright nomargin"><span>Click me!</span> <i class="icon-angle-right"></i></a></div>
 
 							</li>
                            
-                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="@Url.Content("~/Content/images/rs/r5bgthumb.png")" data-delay="115000"  data-saveperformance="off"  data-title="News & Updates">
+                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="@Url.Content("~/Content/images/rs/r5bgthumb.jpg")" data-delay="115000"  data-saveperformance="off"  data-title="News & Updates">
 								<!-- MAIN IMAGE -->
-								<img src="@Url.Content("~/Content/images/rs/bg5.jpg")"  alt="kenburns6"  data-bgposition="center bottom" data-kenburns="on" data-duration="25000" data-ease="Linear.easeNone" data-scale="100" data-scaleend="120" data-bgpositionend="center top">
+								<img src="@Url.Content("~/Content/images/rs/r5bgthumb.jpg")"  alt="kenburns6"  data-bgposition="center bottom" data-kenburns="on" data-duration="25000" data-ease="Linear.easeNone" data-scale="100" data-scaleend="120" data-bgpositionend="center top">
 								<!-- LAYERS -->
 
 								<div class="tp-caption customin ltl tp-resizeme"
@@ -291,7 +291,7 @@
 								data-elementdelay="0.01"
 								data-endelementdelay="0.1"
 								data-endspeed="1000"
-								data-endeasing="Power4.easeIn"><img src="@Url.Content("~/Content/images/rs/news.png")" alt="imac"></div>
+								data-endeasing="Power4.easeIn">@*<img src="@Url.Content("~/Content/images/rs/news.png")" alt="imac">*@</div>
 
 								<div class="tp-caption customin ltl tp-resizeme revo-slider-emphasis-text nopadding noborder"
 								data-x="600"
@@ -333,7 +333,7 @@
 								data-elementdelay="0.01"
 								data-endelementdelay="0.1"
 								data-endspeed="1000"
-								data-endeasing="Power4.easeIn" style="z-index: 3;"><a href="#" class="button button-large button-rounded tright nomargin"><span>Read More</span><i class="icon-angle-right"></i></a></div>
+								data-endeasing="Power4.easeIn" style="z-index: 3;"><a href="@Url.Action("News", "Home")" class="button button-large button-rounded tright nomargin"><span>Read More</span><i class="icon-angle-right"></i></a></div>
 
 							</li>
                              
@@ -361,13 +361,8 @@
 								<a href="#"><i class="icon-screen i-alt"></i></a>
 							</div>
 							<h3>Paper maps</h3>
-							<p style="line-height: 1.6;font-size: 13px;">Besides creating and printing historical maps of your lands, we conduct research, and
-
-collect data, use Geographic Information Systems (GIS), global positioning systems
-
-(GPS), and computer-aided design (CAD) systems to compile, analyze, and distribute the
-
-most accurate information about the location of natural and human-made resources.
+							<p style="line-height: 1.6;font-size: 13px;">Besides creating and printing historical maps of your lands, we conduct research, and collect data, use Geographic Information Systems (GIS), global positioning systems (GPS), and computer-aided design (CAD) systems to compile, analyze, and distribute the most accurate information about the location of natural and human-made resources. 
+                            These tools support the business functions of the Longplain First Nation.
 </p>
 						</div>
 					</div>
@@ -378,13 +373,9 @@ most accurate information about the location of natural and human-made resources
 								<a href="#"><i class="icon-eye i-alt"></i></a>
 							</div>
 							<h3>Measure land sites</h3>
-							<p style="line-height: 1.6;font-size: 13px;">Sometime it’s difficult to measure landsite as it could be part of forest or under water. We use
-
-tools to measure lands using digital technology that can measure accurately with accuracy up to
-
-nearest inch. Comparing actual measurements with what is size on the paper gives you a perfect
-
-management tool for your land resources.</p>
+							<p style="line-height: 1.6;font-size: 13px;">Sometime it’s difficult to measure landsite as it could be part of forest or under water. 
+                            We use tools to measure lands using digital technology that can measure accurately with accuracy up to nearest inch. 
+                            Comparing actual measurements with what is size on the paper gives you a perfect management tool for your land resources.</p>
 						</div>
 					</div>
 
@@ -393,14 +384,9 @@ management tool for your land resources.</p>
 							<div class="fbox-icon">
 								<a href="#"><i class="icon-beaker i-alt"></i></a>
 							</div>
-							<h3>Digital maps</h3>
-							<p style="line-height: 1.6;font-size: 13px;">We create pixel perfect digital maps for natural and human made resources. For planning,
-
-promoting tourism and management of your land resources, let us help you create featured
-
-maps for display on your website and PowerPoint presentations. We use drone technology to
-
-collect every detail and encapsulate in the high resolution movie format</p>
+							<h3>Track changes in Land</h3>
+							<p style="line-height: 1.6;font-size: 13px;">Every land resource has undergone through historical changes in chemistry of the land over period of time due to weather conditions or construction. We can track such changes starting from 1992 for your review using imagery tools. 
+                            This includes changes in shape and size of the landsite to realize encroachments, forestation, and other factors.</p>
 						</div>
 					</div>
 
@@ -411,14 +397,9 @@ collect every detail and encapsulate in the high resolution movie format</p>
 							<div class="fbox-icon">
 								<a href="#"><i class="icon-stack i-alt"></i></a>
 							</div>
-							<h3>Measure land sites</h3>
-							<p style="line-height: 1.6;font-size: 13px;">Sometime it’s difficult to measure landsite as it could be part of forest or under water. We use
-
-tools to measure lands using digital technology that can measure accurately with accuracy up to
-
-nearest inch. Comparing actual measurements with what is size on the paper gives you a perfect
-
-management tool for your land resources.</p>
+							<h3>Stream live</h3>
+							<p style="line-height: 1.6;font-size: 13px;">If you want to stream live an event or visuals of the landscape, we can help you stream live from any location on your website. 
+                            This helps you engage your community members irrespective of their physical location and make them part of the activity being carried out in real time. Examples of such events include graduation ceremonies, board and council meetings.</p>
 						</div>
 					</div>
 
@@ -428,13 +409,9 @@ management tool for your land resources.</p>
 								<a href="#"><i class="icon-tint i-alt"></i></a>
 							</div>
 							<h3>Landscape designs</h3>
-							<p style="line-height: 1.6;font-size: 13px;">While planning for perfect community living, landscape design of the playgrounds and parks is
-
-key factor. Our landscape designers are trained and experienced to create awesome designs of
-
-your land resources to make it look beautiful and aesthetic. Let us help you build you a perfect
-
-site for your land, parks or playgrounds.</p>
+							<p style="line-height: 1.6;font-size: 13px;">While planning for perfect community living, landscape design of the playgrounds and parks is a key factor. 
+                            Our landscape designers are trained and experienced to create awesome designs of your land resources to make it look beautiful and aesthetic. 
+                            Let us help you build you a perfect landscape design for your land, parks or playgrounds.</p>
 						</div>
 					</div>
 
@@ -444,13 +421,9 @@ site for your land, parks or playgrounds.</p>
 								<a href="#"><i class="icon-text-width i-alt"></i></a>
 							</div>
 							<h3>Virtual tours</h3>
-							<p style="line-height: 1.6;font-size: 13px;">Let us help you create virtual tours of you landsite so that you can every part of your land
-
-resources. We do this using state of the art drone technology which fly above the site and
-
-capture high resolution images of the site. This gives you a different view how your site look
-
-from the air. We also create virtual tours of the building and facilities.</p>
+							<p style="line-height: 1.6;font-size: 13px;">Let us help you create virtual tours of your landscape so that you can be part of your land resources. 
+                            We do this using state of the art drone technology which fly above the site and capture high resolution images of the site. 
+                            This gives you a different view how your site look from the air. We also create virtual tours of the building and facilities.</p>
 						</div>
 					</div>
 
@@ -494,13 +467,13 @@ from the air. We also create virtual tours of the building and facilities.</p>
                         <a href="#" ><img src="@Url.Content("~/Content/images/newsItem1.png")" alt="Image" class="bottommargin-sm"></a>
                         }
                         <h4>@item.Title</h4>
-                        @if(item.Description != null &&  item.Description.Length > 0 && item.Description.Length < 70)
+                        @if(item.Description != null &&  item.Description.Length > 0 && item.Description.Length < 110)
                         {
                         <p>@item.Description</p>
                             }
                             else if(item.Description != null)
                             {
-                            <p>@item.Description.Substring(0,70).ToString() + "..." <a href="@Url.Action("NewsDetails", "Home", new  { newsid = item.NewsID })" class="btn btn-danger">Read More</a></p>
+                            <p>@item.Description.Substring(0,110).ToString() ... <a href="@Url.Action("NewsDetails", "Home", new  { newsid = item.NewsID })" class="btn btn-danger">Read More</a></p>
                             }   
                     </div>
                     
@@ -518,13 +491,13 @@ from the air. We also create virtual tours of the building and facilities.</p>
                         <a href="#" ><img src="@Url.Content("~/Content/images/newsItem1.png")" alt="Image" class="bottommargin-sm"></a>
                             }
                         <h4>@item.Title</h4>
-                       @if (item.Description != null && item.Description.Length > 0 && item.Description.Length < 70)
+                       @if (item.Description != null && item.Description.Length > 0 && item.Description.Length < 110)
                         {
                         <p>@item.Description</p>
                             }
                             else if (item.Description != null)
                             {
-                            <p>@item.Description.Substring(0,70).ToString() + "..." <a href="@Url.Action("NewsDetails", "Home", new  { newsid = item.NewsID })" class="btn btn-danger">Read More</a></p>
+                            <p>@item.Description.Substring(0,110).ToString() ... <a href="@Url.Action("NewsDetails", "Home", new  { newsid = item.NewsID })" class="btn btn-danger">Read More</a></p>
                             }   
                     </div>
                                         }
@@ -581,7 +554,7 @@ most accurate information about the location <br /> of natural and human-made re
 <p>These tools support the business functions <br /> of the Longplain First Nation.</p>
 
                             
-                            <a href="#" class="button button-border button-rounded button-large button-dark noleftmargin">Browse Maps</a>
+                            <a href="@Url.Action("MapsView", "Home")" class="button button-border button-rounded button-large button-dark noleftmargin">Browse Maps</a>
 
                         </div>
 
@@ -608,7 +581,7 @@ most accurate information about the location <br /> of natural and human-made re
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet cumque, perferendis accusamus porro illo exercitationem molestias, inventore obcaecati ut omnis voluptatibus ratione odio amet magnam quidem tempore necessitatibus
                                 quaerat, voluptates excepturi voluptatem, veritatis qui temporibus.</p>
 
-                            <a href="#" class="button button-border button-rounded button-large button-dark noleftmargin">View Gallery</a>
+                            <a href="@Url.Action("Gallery", "Home")" class="button button-border button-rounded button-large button-dark noleftmargin">View Gallery</a>
 
                         </div>
 

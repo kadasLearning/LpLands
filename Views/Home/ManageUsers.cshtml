@@ -455,11 +455,13 @@ function initDataTable() {
     evt.preventDefault();
     });
 
-
+    var newsthumbnail = document.getElementById("thumbnail").files[0];
             $.ajax({
                 type: "POST",
+                enctype: 'multipart/form-data',
                 url: "@Url.Action("SaveMaps", "Home")",
-                data: $("#frmSaveMap").serialize(),
+               // data: $("#frmSaveMap").serialize(),
+                data: $("#frmSaveMap").serialize() +'&ddlMapType='+$("#ddlMapType option:selected").text()+'&ddlProvince='+$("#ddlProvince option:selected").text()+'&thumbnail='+document.getElementById("thumbnail").files[0],
                 success: function (data) {
 
                         if(data.Message != "Error")
@@ -646,6 +648,24 @@ function initDataTable() {
         });
         //End Save Profile
 
+
+        $("body").on("change", "#ddlMapType", function (evt) {
+//        $("#ddlMapType").change(function () {
+
+//        alert(this.value);
+
+        var selectedval = this.value;
+        if(selectedval== "Video"){
+            $("#lblurl").show(); 
+            $("#lblbrowse").hide();
+        } 
+        else if(selectedval== "Image")
+        {
+           $("#lblurl").hide(); 
+            $("#lblbrowse").show();
+        }
+        
+    });
 
     });
 

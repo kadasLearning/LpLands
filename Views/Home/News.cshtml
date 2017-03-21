@@ -58,7 +58,7 @@
                             }
                             else if (item.Description != null)
                             {
-                            <p>@item.Description.Substring(0,200).ToString() + "..."</p>
+                            <p>@item.Description.Substring(0,200).ToString() ...</p>
                             }   
 									<a href="@Url.Action("NewsDetails", "Home", new  { newsid = item.NewsID })" class="btn btn-danger">Read More</a>
 								</div>

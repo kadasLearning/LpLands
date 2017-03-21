@@ -15,13 +15,13 @@
 
 							<div class="col_half">
 								<label for="register-form-name">Name:</label>
-                                @Html.TextBoxFor(m => m.registermodel.Name, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.registermodel.Name, new { @class = "form-control", required = "required" })
 								@*<input type="text" id="register-form-name" name="register-form-name" value="" class="form-control" />*@
 							</div>
 
 							<div class="col_half col_last">
 								<label for="register-form-email">Email Address:</label>
-                                 @Html.TextBoxFor(m => m.registermodel.UserName, new { @class = "form-control" })
+                                 @Html.TextBoxFor(m => m.registermodel.UserName, new { @class = "form-control", required = "required" })
 								@*<input type="text" id="register-form-email" name="register-form-email" value="" class="form-control" />*@
 							</div>
 
@@ -42,13 +42,13 @@
 
 							<div class="col_half">
 								<label for="register-form-password">Choose Password:</label>
-                                @Html.PasswordFor(m => m.registermodel.Password, new { @class="form-control"  })
+                                @Html.PasswordFor(m => m.registermodel.Password, new { @class = "form-control", required = "required" })
 								@*<input type="password" id="register-form-password" name="register-form-password" value="" class="form-control" />*@
 							</div>
 
 							<div class="col_half col_last">
 								<label for="register-form-repassword">Re-enter Password:</label>
-                                 @Html.PasswordFor(m => m.registermodel.ConfirmPassword, new { @class="form-control"  })
+                                 @Html.PasswordFor(m => m.registermodel.ConfirmPassword, new { @class = "form-control", required = "required" })
 								@*<input type="password" id="register-form-repassword" name="register-form-repassword" value="" class="form-control" />*@
 							</div>
 

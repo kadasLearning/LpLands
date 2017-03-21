@@ -1,0 +1,139 @@
+﻿@model List<LandsDepartment.Models.Map>		
+        <!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap">
+
+				<div class="container clearfix">
+
+					<div class=" nobottommargin">
+
+						<div id="posts" class="events small-thumbs">
+
+							
+                            @foreach (var item in Model)
+                            {
+@*                                <div class="entry clearfix">
+								<div class="entry-image">
+                                @if (item.Thumbnail != null)
+                                {
+									<a href="#">
+										<img src="~/Content/Images/maps/thumbnail/@item.Thumbnail" alt="Image">
+										<div class="entry-date">Longitude<span>@item.LANG</span>, Latitude<span>@item.LAT</span></div>
+									</a>
+                                }
+                                else
+                                {
+                                    <a href="#">
+										<img src="~/Content/Images/maps/1.jpg" alt="Image">
+										<div class="entry-date">Longitude<span>@item.LANG</span>, Latitude<span>@item.LAT</span></div>
+									</a>
+                                }
+								</div>
+								<div class="entry-c">
+									<div class="entry-title">
+										<h2><a href="#">@item.TITLE</a></h2>
+									</div>
+									
+									<div class="entry-content">
+										<p>@if (item.Description != null &&  item.Description.Length > 200)
+             { <p> @item.Description.Substring(0,200)  ... </p>}
+             else
+             {<p> @item.Description</p>}</p>
+										<a href="@Url.Action("MapDetailView", "Home", new { mapId = @item.ID })" class="btn btn-default">View Details</a> 
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                        <a href="#" class="btn btn-danger">Download</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Login", "Account")" class="btn btn-danger">Download</a>
+                                        }
+									</div>
+								</div>
+							</div>*@
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <div class="entry map-list clearfix">
+								<div class="entry-image entry-image2">
+                                @if (item.Thumbnail != null)
+                                {
+									<a href="#">
+										<img src="~/Content/images/maps/thumbnail/@item.Thumbnail" alt="Image">
+										<div class="ll-values">Longitude:<span>@item.LANG</span>, Latitude:<span>@item.LAT</span></div>
+									</a>
+                                }
+                                else
+                                {
+                                    <a href="#">
+										<img src="~/Content/images/maps/1.jpg" alt="Image">
+										<div class="ll-values">Longitude:<span>@item.LANG</span>, Latitude:<span>@item.LAT</span></div>
+									</a>
+                                }
+								</div>
+								<div class="entry-c">
+									<div class="entry-title">
+										<h2><a href="#">@item.TITLE</a></h2>
+									</div>
+									
+									<div class="entry-content">
+										<p>@if (item.Description != null &&  item.Description.Length > 220)
+             { <p> @item.Description.Substring(0, 220)  ... </p>}
+             else
+             {<p> @item.Description</p>}</p>
+
+
+
+										<div class="right-full"><a href="@Url.Action("MapDetailView", "Home", new { mapId = @item.ID })" class="btn btn-default">View Details</a> 
+
+                                        @if(item.MapType == false)
+                                        {
+                                        if (User.Identity.IsAuthenticated)
+                                        {
+                                        <a href="@Url.Action("Download", "Home", new  { mapId = item.ID})" class="btn btn-danger">Download</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Login", "Account")" class="btn btn-danger">Download</a>
+                                        }
+                                        }
+                                        </div>
+									</div>
+								</div>
+							</div>
+
+                            }
+                           
+                            
+							
+
+							
+
+							
+
+						</div>
+
+						<!-- Pagination
+						============================================= -->
+						<ul class="pager nomargin">
+							<li class="previous"><a href="#" id="oldermaps">&larr; Older</a></li>
+							<li class="next"><a href="#" id="newermaps">Newer &rarr;</a></li>
+						</ul><!-- .pager end -->
+
+					</div>
+
+					
+
+				</div>
+
+			</div>
+
+		</section><!-- #content end -->

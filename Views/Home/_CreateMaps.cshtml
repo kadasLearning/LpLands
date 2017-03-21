@@ -1,4 +1,12 @@
 ﻿@model LandsDepartment.Models.Map
+
+
+<script>
+
+
+</script>
+
+
  <section id="content" style="margin-bottom: 0px;">
 
             <div class="content-wrap">
@@ -10,18 +18,94 @@
 						<h1>Manage Map</h1>
 					    </div>
                     
-                    <form id="frmSaveMap"  class="nobottommargin">
+                    @*<form id="frmSaveMap"  class="nobottommargin">*@
+                    <form id="frmSaveMap2"  class="nobottommargin" action="@Url.Action("SaveMaps", "Home")" enctype="multipart/form-data" method="post">
                     @Html.ValidationSummary(true)
                     @Html.HiddenFor(model => model.ID)
 
-							<div class="col_half">
+							@*<div class="col_half">
 								<label for="register-form-password">Google ID:</label>
                                 @Html.TextBoxFor(m => m.GoogleID, new { @class = "form-control", placeholder = "Google Id" })
+							</div>*@
+
+							<div class="col_full">
+								<label for="register-form-repassword">Title:</label>
+                                @Html.TextBoxFor(m => m.TITLE, new { @class = "form-control", placeholder = "Title", required = "required" })
 							</div>
 
-							<div class="col_half col_last">
-								<label for="register-form-repassword">Title:</label>
-                                @Html.TextBoxFor(m => m.TITLE, new { @class = "form-control", placeholder = "Title" })
+
+                               <div class="col_half ">
+								<label for="register-form-repassword">Map Type:</label>
+                                @*@Html.DropDownListFor(x => x.MapType,(SelectList)@ViewBag.MapTypes)*@
+                                <select class="sm-form-control" id="ddlMapType" name="ddlMapType" required="required">
+  @*<option value="">Select Map Type</option>*@
+  <option value="Image" selected="selected">Image</option>
+  <option value="Video">Video</option>
+</select>
+							</div>
+
+                            
+                            <div class="col_half col_last" style="display:none" id="lblurl">
+								<label for="register-form-repassword">URL:</label>
+                                @Html.TextBoxFor(m => m.URL, new { @class = "form-control", placeholder = "URL" })
+							</div>
+
+
+                            <div class="col_half col_last" id="lblbrowse">
+								<label for="register-form-repassword">Upload Image:</label>
+                                <input type="file" id="mapImage" name="mapImage"/>
+                               @* @Html.TextBoxFor(m => m.URL, new { @class = "form-control", placeholder = "URL", required = "required" })*@
+							</div>
+
+                          
+
+
+                            <div class="col_full">
+								<label for="register-form-repassword">Description:</label>
+                                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Enter Description here" ,required="required", rows=4})
+							</div>
+
+                            <div class="col_half">
+								<label for="register-form-repassword">Address Line 1:</label>
+                                @Html.TextBoxFor(m => m.Line1, new { @class = "form-control", placeholder = "Address Line 1", required = "required" })
+							</div>
+
+                            <div class="col_half col_last">
+								<label for="register-form-repassword">Address Line 2:</label>
+                                @Html.TextBoxFor(m => m.Line2, new { @class = "form-control", placeholder = "Address Line 2" })
+							</div>
+
+                          
+
+                            <div class="col_one_third">
+								<label for="register-form-repassword">City:</label>
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City", required = "required" })
+							</div>
+
+                            <div class="col_one_third">
+								<label for="register-form-repassword">Province:</label>
+                               @* @Html.TextBoxFor(m => m.Province, new { @class = "form-control", placeholder = "Province" })*@
+                               <select class="sm-form-control" id="ddlProvince" name="ddlProvince" required="required">
+                                  <option value="--">Select Province</option>
+                                  <option value="Alberta">Alberta</option>
+                                  <option value="British Columbia">British Columbia</option>
+                                  <option value="Manitoba">Manitoba</option>
+                                  <option value="New Brunswick">New Brunswick</option>
+                                  <option value="Newfoundland">Newfoundland</option>
+                                  <option value="Northwest Territories">Northwest Territories</option>
+                                  <option value="Nova Scotia">Nova Scotia</option>
+                                  <option value="Nunavut">Nunavut</option>
+                                  <option value="Ontario">Ontario</option>
+                                  <option value="Prince Edward Island">Prince Edward Island</option>
+                                  <option value="Quebec">Quebec</option>
+                                  <option value="Saskatchewan">Saskatchewan</option>
+                                  <option value="Yukon Territory">Yukon Territory</option>
+                              </select>
+							</div>
+
+                              <div class="col_one_third col_last">
+								<label for="register-form-repassword">Postal Code:</label>
+                                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control", placeholder = "Postal Code", required = "required" })
 							</div>
 
                             <div class="col_half">
@@ -34,17 +118,18 @@
                                 @Html.TextBoxFor(m => m.LAT, new { @class = "form-control", placeholder = "Latitude" })
 							</div>
 
-                            <div class="col_full">
-								<label for="register-form-repassword">URL:</label>
-                                @Html.TextBoxFor(m => m.URL, new { @class = "form-control", placeholder = "URL" })
+                            <div class="col_half">
+								<label for="register-form-password">Upload Thumbnail:</label>
+                                <input type="file" id="thumbnail" name="thumbnail"/>
 							</div>
 
                         <div class="clear"></div>
                        
 							<div class="col_full nobottommargin">
-                            <input type="button" id="btnSaveMap" value="Save" class="button button-3d button-black" />
+                            <input type="submit" id="btnSaveMap2" value="Save" class="button button-3d button-black" />
 							</div>
-                        
+                         <div class="clear"></div>
+                         <h5>Note:</h5> <p>Fill out the form with complete Address of map to Pin Google map accurately, and if know longitude and latitude enter those as well for accuracy. Enter URL of image/video that will be shown</p>
                         
 						</form>
 

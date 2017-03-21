@@ -1,0 +1,150 @@
+﻿@model LandsDepartment.Models.Map		
+<!-- Content
+		============================================= -->
+		@*<section id="content">
+
+			<div class="content-wrap">
+            
+          	  <div class="container clearfix">
+
+						<div class="postcontent nobottommargin clearfix" style="width:100%">
+								<h3>Map Image View</h3>
+
+								<p>@Model.Description</p>
+
+						</div>
+
+					</div>
+
+				<div class="single-event">
+
+					<div class="entry-image parallax header-stick" style="background-image: url('images/events/10.jpg'); height:600px" data-stellar-background-ratio="0.3">
+						<div class="entry-overlay-meta">
+							<h2><a href="#"> @Model.TITLE </a></h2>
+							<ul class="iconlist">
+							
+								<li><i class="icon-map-marker2"></i> <strong>Logitutde:</strong> 12356.64</li>
+								<li><i class="icon-map-marker2"></i> <strong>Latitude:</strong> 12356.64</li>
+							</ul>
+							
+						</div>
+						
+						
+					</div>
+
+					
+
+				</div>
+                
+                <div class="container clearfix">
+
+						<div class="nobottommargin clearfix">
+								<h3>Google Map Location View</h3>
+
+								
+						</div>
+                        
+                        
+
+					</div>
+
+                    
+                     <div class="container clearfix">
+	  
+					<div id="google-map4" style="height: 400px; margin-bottom: 20px; position: relative; overflow: hidden; background:#eee" class="gmap">
+                        <iframe frameborder="0" style="border:0; width:100%;" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCblUvw43OPPUL1q6kfl-Y2pTYerBtQL_Q&#10;            &amp;q=@Model.Line1.Replace("\"", " ") @Model.Line2.Replace("\"", " ") , @Model.City.Replace("\"", " ")  @Model.Zip" allowfullscreen="">
+                        </iframe>
+                    </div>
+
+                    
+
+
+					</div>
+
+				
+
+			</div>
+
+		</section><!-- #content end -->
+*@
+
+
+        <section id="content">
+
+			<div class="content-wrap">
+            
+          	  <div class="container clearfix">
+
+						<div class="postcontent nobottommargin clearfix" style="width:100%">
+								<h3>@Model.TITLE</h3>
+						</div>
+
+					</div>
+                    
+                    <div class="container clearfix">
+
+				<div class="single-event">
+
+                @if (Model.MapType == false)
+                {
+						<img src="@Url.Content("/Content/Images/maps/pics/"+@Model.URL)" title="" alt=""/>
+                }
+                else if (Model.MapType == true)
+                {
+                    <iframe src="@Model.URL"></iframe>
+                }
+				</div>
+                </div>
+                
+                <div class="container clearfix">
+
+						<div class="col_two_third topmargin clearfix">
+								<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Description</h3>
+							</div>
+							<div class="panel-body">
+								<p>@Model.Description
+                                @*<br/>
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<strong>Longitude Value:</strong> 23467.987
+                                
+                                <br/>
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<strong>Latitude Value:</strong> 35346.97867*@
+                                </p>
+							</div>
+						</div>
+
+								
+						</div>
+                        
+                        <div class="col_one_third col_last topmargin clearfix">
+								<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Find us on Map</h3>
+							</div>
+							<div class="panel-body">
+								<div id="google-map4" style="height: 300px; position: relative; overflow: hidden; background:#eee" class="gmap">
+                                 <iframe frameborder="0" style="border:0; width:100%;" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCblUvw43OPPUL1q6kfl-Y2pTYerBtQL_Q&#10;            &amp;q=@Model.Line1.Replace("\"", " ") @Model.Line2.Replace("\"", " ") , @Model.City.Replace("\"", " ")  @Model.Zip" allowfullscreen="">
+                        </iframe>
+                                </div>
+							</div>
+						</div>
+
+								
+						</div>
+                        
+                        
+
+					</div>
+                    
+                     <div class="container clearfix">
+	  
+					
+					</div>
+
+				
+
+			</div>
+
+		</section><!-- #content end -->
+

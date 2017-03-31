@@ -10,7 +10,7 @@
 						<h1>Manage News</h1>
 					    </div>
                     
-                    <form id="frmSaveMap1"  class="nobottommargin" action="@Url.Action("SaveNews", "Home")" enctype="multipart/form-data" method="post">
+                    <form id="frmSaveMap1"  class="nobottommargin" action="@Url.Action("SaveNews", "Home")" enctype="multipart/form-data" method="post" novalidate>
                    
                     @Html.ValidationSummary(true)
                     @Html.HiddenFor(model => model.NewsID)
@@ -22,7 +22,15 @@
 
 							<div class="col_full">
 								<label for="register-form-repassword">Description:</label>
-                                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Description", col = "10", rows = "4", required = "required" })
+                                @*@Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Description", col = "10", rows = "4", required = "required" })*@
+                                  @Html.TextAreaFor(m => m.Description, new { @class = "form-control", col = "10", rows = "4", required = "required" })
+                                <script>
+                                    CKEDITOR.replace('Description', {
+                                      //  extraPlugins: 'mathjax',
+                                        height: 250
+                                    });
+                                               
+                                            </script>
 							</div>
 
                            
@@ -41,7 +49,6 @@
                                @* @Html.TextBoxFor(m => m.Image, new { @class = "form-control", placeholder = "URL" })*@
 							</div>
                             
-  
 
                         <div class="clear"></div>
                        

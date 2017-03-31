@@ -13663,3 +13663,64 @@ body:not(.no-transition) #wrapper,
 .map-list:hover .entry-title h2 a {
     color: #578bff;
 }
+
+
+
+
+
+
+.portfolio-overlay a{
+	left:57%;
+}
+.dropcap2{
+	font-size:20px ;
+	color:#1ABC9C;
+	float: left;
+    line-height: 1;
+    margin: 2px 5px 0 0;
+    text-transform: uppercase;
+}
+
+.content-listing{
+	float:left;
+	width:100%;
+	margin-left:20px;
+}
+.content-listing li{
+	list-style:none;
+	line-height:24px;
+}
+
+.border
+{
+        box-shadow:  0 0 6px #444;
+		border:#fff 6px solid;
+}
+
+.border:hover
+{
+        box-shadow:  0 0 0 3px #5D8FFF;	
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+}
+
+
+.expand{
+	float:right;
+	width:auto;
+	text-align:center;
+	padding:10px 20px;
+	background:#6695FF;
+	color:#fff;
+	margin-bottom:10px
+}
+
+
+.expanded-content{
+	float:left;
+	width:100%;
+	background:#f6f6f6;
+	padding:10px 20px;
+	margin-top:-10px;
+	margin-bottom:30px
+}

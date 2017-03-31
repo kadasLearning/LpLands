@@ -166,8 +166,8 @@
 							
 							<li><a href="@Url.Action("LandManagement", "Home")" style="padding-left:14px;padding-right:14px;"><div>Land Management</div><span>Programs</span></a></li>
 							<li><a href="@Url.Action("About", "Home")" style="padding-left:14px;padding-right:14px;"><div>Our History</div><span>About Our Past</span></a></li>
-                            <li><a href="@Url.Action("CommunityProfile", "Home")" style="padding-left:14px;padding-right:14px;"><div>Community Profile</div><span>Departments Details</span></a></li>
-                            <li><a href="#" style="padding-left:14px;padding-right:14px;"><div>Our Future</div><span>Bright Future</span></a></li>
+                            <li><a href="@Url.Action("CommunityProfile", "Home")" style="padding-left:14px;padding-right:14px;"><div>Our Profile</div><span>Departments Details</span></a></li>
+                            <li><a href="@Url.Action("OurFuture", "Home")" style="padding-left:14px;padding-right:14px;"><div>Our Future</div><span>Bright Future</span></a></li>
                            @* <li><a href="#"><div>Land Code</div><span>Land Details</span></a></li>*@
                            @* <li><a href="@Url.Action("OurFuture", "Home")"><div>Our Future</div><span>Bright Future</span></a></li>*@
                             <li><a href="@Url.Action("LandCode", "Home")" style="padding-left:14px;padding-right:14px;"><div>Land Code</div><span>Land Details</span></a></li>
@@ -248,6 +248,8 @@
                             <li><a href="#" id="newslink"><div>News</div></a></li>
 							<li><a href="#" id="editProfile"><div>Edit Profile</div></a></li>
                             <li><a href="#" id="changePassword"><div>Change Password</div></a></li>
+                            
+                            <li><a href="@Url.Action("googleAnalytics","Home")" target="_blank" id="analyticsPage"><div>Google Analytics</div></a></li>
                         }
 							
 							
@@ -299,7 +301,7 @@
                                     <li><a href="@Url.Action("News", "Home")">Lands Updates</a></li>
                                     <li><a href="http://www.lpet.ca/HRMS/Public/SponsorshipList" target="_blank">Training Opportunities</a></li>
                                     <li><a href="#">Community Services</a></li>
-                                    <li><a href="#">Follow us on Facebook</a></li>
+                                    <li><a href="https://www.facebook.com/LPFN-Lands-Department-1638771852817439/" target="_blank">Follow us on Facebook</a></li>
                                     <li><a href="@Url.Action("MapGallery", "Home")">Our Maps Gallery</a></li>
                                 </ul>
                             </div>
@@ -436,7 +438,7 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
 				dottedOverlay:"none",
 				delay:16000,
 				startwidth:1140,
-				startheight:600,
+				startheight:700,
 				hideThumbs:200,
 
 				thumbWidth:100,

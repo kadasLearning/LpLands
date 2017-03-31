@@ -16,7 +16,7 @@
 <script type="text/javascript" src="@Url.Content("~/Content/DTGrid/dataTables.responsive.min.js")"></script>
 
 
-
+<script src="@Url.Content("~/ckeditor/ckeditor.js")" type="text/javascript"></script>
 
 
 <script type="text/javascript" charset="utf-8">
@@ -691,6 +691,7 @@ function initDataTable() {
 }
 else
 {
-    @Html.Partial("_EditProfile", Model.SingleOrDefault(m => m.aspnet_Users.UserName == User.Identity.Name))
+    LandsDepartment.Models.aspnet_Membership res = Model.SingleOrDefault(m => m.aspnet_Users.UserName == User.Identity.Name);
+    @Html.Partial("_EditProfile", res)
 }
 </div>

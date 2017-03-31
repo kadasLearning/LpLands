@@ -19,6 +19,14 @@ namespace LandsDepartment.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Super Admin,Admin")]
+        public ActionResult googleAnalytics()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+
         public ActionResult News()
         {
             List<News> objnews = db.News.Where(n => n.ShowOnWeb == null || n.ShowOnWeb == true).ToList();
@@ -46,6 +54,12 @@ namespace LandsDepartment.Controllers
             return View();
         }
 
+        public ActionResult OurFuture()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
 
 
         public ActionResult LandManagement()
@@ -502,6 +516,7 @@ namespace LandsDepartment.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult SaveNews(News model, HttpPostedFileBase imgNews)
         {
 
